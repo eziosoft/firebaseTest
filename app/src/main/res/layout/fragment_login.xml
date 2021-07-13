@@ -31,7 +31,7 @@
         android:text="aaaaaaaa" />
 
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/loginB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -39,21 +39,21 @@
         android:text="Login" />
 
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/signInB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Register" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/logOutB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="Logout" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/deleteUserB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/goToDatabaseB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

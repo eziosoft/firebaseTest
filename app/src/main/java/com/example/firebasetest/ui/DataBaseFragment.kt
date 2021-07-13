@@ -52,7 +52,7 @@ class DataBaseFragment : Fragment(R.layout.fragment_data_base) {
                     if (result.isSuccessful) {
                         showToast("Entry added")
                     } else {
-                        showToast("Error adding entry")
+                        showAlert(AlertType.ERROR,"Error",result.exception?.message.toString()){}
                         Log.e(TAG, "add to db: ", result.exception)
                     }
                 }

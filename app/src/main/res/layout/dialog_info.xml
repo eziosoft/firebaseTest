@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/mid_margin"
+    android:background="@drawable/rounded_shape"
+    >
+
+    <ImageView
+        android:id="@+id/alertTypeIcon"
+        android:layout_width="@dimen/small_icon"
+        android:layout_height="@dimen/small_icon"
+        android:layout_marginTop="@dimen/very_small_margin"
+        android:src="@drawable/ic_information"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/alertTitle"
+        tools:ignore="ContentDescription"
+        />
+
+    <TextView
+        android:id="@+id/alertTitle"
+
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_marginEnd="@dimen/small_margin"
+        android:textColor="?colorOnSecondary"
+        app:layout_constraintEnd_toStartOf="@+id/alertCloseIcon"
+        app:layout_constraintStart_toEndOf="@+id/alertTypeIcon"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@tools:sample/lorem[1]"
+        />
+
+    <ImageView
+        android:id="@+id/alertCloseIcon"
+        android:layout_width="@dimen/small_icon"
+        android:layout_height="@dimen/small_icon"
+        android:layout_marginTop="@dimen/very_small_margin"
+        android:src="@drawable/ic_close"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/alertTitle"
+        tools:ignore="ContentDescription"
+        />
+
+    <TextView
+        android:id="@+id/alertDescription"
+android:textColor="@color/black"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_margin"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginEnd="@dimen/small_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/alertCloseIcon"
+        app:layout_constraintStart_toEndOf="@+id/alertTypeIcon"
+        app:layout_constraintTop_toBottomOf="@+id/alertTitle"
+        tools:text="@tools:sample/lorem[10]"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

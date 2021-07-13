@@ -41,7 +41,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 if (result.isSuccessful) {
                     showToast("User deleted")
                 } else {
-                    showToast(result.exception?.message.toString())
+                    showAlert(AlertType.ERROR,"Error",result.exception?.message.toString()){}
                     Log.e(TAG, "delete user: ", result.exception)
                 }
             }
@@ -54,7 +54,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 if (result.isSuccessful) {
                     showToast("New User created")
                 } else {
-                    showToast(result.exception?.message.toString())
+                    showAlert(AlertType.ERROR,"Error",result.exception?.message.toString()){}
                     Log.e(TAG, "create user: ", result.exception)
                 }
             }
@@ -85,7 +85,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
                 } else {
                     Log.e(TAG, result.exception.toString())
-                    showToast(result.exception?.message.toString())
+                    showAlert(AlertType.ERROR,"Error",result.exception?.message.toString()){}
                 }
             }
         }
