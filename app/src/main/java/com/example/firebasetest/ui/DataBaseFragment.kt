@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ArrayAdapter
 import com.example.firebasetest.*
 import com.example.firebasetest.databinding.FragmentDataBaseBinding
+import com.example.firebasetest.firebase.FireBaseTest
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -27,7 +28,7 @@ class DataBaseFragment : Fragment(R.layout.fragment_data_base) {
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, values)
         binding.dbListView.adapter = adapter
 
-        fireBaseTest.addDBListener() { dataSnapshot ->
+        fireBaseTest.firebaseRealtimeDB.addDBListener() { dataSnapshot ->
             values.clear()
 
             for (v in dataSnapshot.children) {
@@ -42,13 +43,13 @@ class DataBaseFragment : Fragment(R.layout.fragment_data_base) {
         binding.addToDbB.setOnClickListener() {
 
             val dbItem = DbItem(
-                fireBaseTest.currentUser()?.email,
+                fireBaseTest.firebaseAuthentication.currentUser()?.email,
                 binding.numberET.text.toString(),
                 binding.nameET.text.toString()
             )
 
-            fireBaseTest.currentUser()?.uid?.let { uid ->
-                fireBaseTest.addToDB(uid, dbItem) { result ->
+            fireBaseTest.firebaseAuthentication.currentUser()?.uid?.let { uid ->
+                fireBaseTest.firebaseRealtimeDB.addToDB(uid, dbItem) { result ->
                     if (result.isSuccessful) {
                         showToast("Entry added")
                     } else {

@@ -3,11 +3,11 @@ package com.example.firebasetest.ui
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.firebasetest.*
 import com.example.firebasetest.databinding.FragmentLoginBinding
+import com.example.firebasetest.firebase.FireBaseTest
 import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -37,7 +37,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
 
         binding.deleteUserB.setOnClickListener() {
-            fireBaseTest.deleteUser { result ->
+            fireBaseTest.firebaseAuthentication.deleteUser { result ->
                 if (result.isSuccessful) {
                     showToast("User deleted")
                 } else {
@@ -50,7 +50,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         binding.signInB.setOnClickListener() {
             val username = binding.loginET.text.toString()
             val pass = binding.passET.text.toString()
-            fireBaseTest.registerUser(username, pass) { result ->
+            fireBaseTest.firebaseAuthentication.registerUser(username, pass) { result ->
                 if (result.isSuccessful) {
                     showToast("New User created")
                 } else {
@@ -61,20 +61,20 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
 
 
-        fireBaseTest.addAuthListener { user ->
+        fireBaseTest.firebaseAuthentication.addAuthListener { user ->
             if (user != null)
-                updateScreen(fireBaseTest.currentUser())
+                updateScreen(fireBaseTest.firebaseAuthentication.currentUser())
             else
                 binding.statusTV.text = "Not logged in"
         }
 
 
-        binding.loginB.setOnClickListener() {
+        binding.loginB.setOnClickListener {
             val username = binding.loginET.text.toString()
             val pass = binding.passET.text.toString()
             Log.d(TAG, "login: $username, $pass ")
 
-            fireBaseTest.logIn(
+            fireBaseTest.firebaseAuthentication.logIn(
                 username,
                 pass
             ) { result ->
@@ -91,7 +91,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
 
         binding.logOutB.setOnClickListener() {
-            fireBaseTest.logout()
+            fireBaseTest.firebaseAuthentication.logout()
         }
 
 

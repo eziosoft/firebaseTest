@@ -24,12 +24,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_main) as NavHostFragment
-        navController = navHostFragment.findNavController()
-
-        val appBarConfiguration = AppBarConfiguration(setOf())
-        setupActionBarWithNavController(navController, appBarConfiguration)
+//        val navHostFragment =
+//            supportFragmentManager.findFragmentById(R.id.nav_host_fragment_main) as NavHostFragment
+//        navController = navHostFragment.findNavController()
+//
+//        val appBarConfiguration = AppBarConfiguration(setOf())
+//        setupActionBarWithNavController(navController, appBarConfiguration)
     }
 }
 
