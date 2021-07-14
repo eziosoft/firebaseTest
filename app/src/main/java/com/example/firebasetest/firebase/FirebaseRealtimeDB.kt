@@ -1,5 +1,6 @@
 package com.example.firebasetest.firebase
 
+import androidx.lifecycle.LifecycleOwner
 import com.example.firebasetest.DbItem
 import com.google.android.gms.tasks.Task
 import com.google.firebase.database.DataSnapshot
@@ -16,8 +17,8 @@ class FirebaseRealtimeDB( private val firebaseDatabaseReference: DatabaseReferen
     }
 
 
-    fun addDBListener(onDataChange: (DataSnapshot) -> Unit) {
-        firebaseDatabaseReference.addValueEventListener(object : ValueEventListener {
+    fun addDBListener(lifecycleOwner: LifecycleOwner, onDataChange: (DataSnapshot) -> Unit) {
+        firebaseDatabaseReference.addValueEventListener(lifecycleOwner, object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 onDataChange(snapshot)
             }
@@ -26,4 +27,13 @@ class FirebaseRealtimeDB( private val firebaseDatabaseReference: DatabaseReferen
             }
         })
     }
+
+
+
+
+
+
+
+
+
 }

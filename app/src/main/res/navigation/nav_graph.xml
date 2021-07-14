@@ -12,10 +12,18 @@
         <action
             android:id="@+id/action_loginFragment_to_dataBaseFragment"
             app:destination="@id/dataBaseFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_firestoreFragment"
+            app:destination="@id/firestoreFragment" />
     </fragment>
     <fragment
         android:id="@+id/dataBaseFragment"
         android:name="com.example.firebasetest.ui.DataBaseFragment"
         android:label="fragment_data_base"
         tools:layout="@layout/fragment_data_base" />
+    <fragment
+        android:id="@+id/firestoreFragment"
+        android:name="com.example.firebasetest.ui.FirestoreFragment"
+        android:label="fragment_firestore"
+        tools:layout="@layout/fragment_firestore" />
 </navigation>

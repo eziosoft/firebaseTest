@@ -28,7 +28,7 @@ class DataBaseFragment : Fragment(R.layout.fragment_data_base) {
         val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, values)
         binding.dbListView.adapter = adapter
 
-        fireBaseTest.firebaseRealtimeDB.addDBListener() { dataSnapshot ->
+        fireBaseTest.firebaseRealtimeDB.addDBListener(this) { dataSnapshot ->
             values.clear()
 
             for (v in dataSnapshot.children) {

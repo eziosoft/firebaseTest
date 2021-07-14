@@ -58,8 +58,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Delete user"
-        android:backgroundTint="#F00"/>
+        android:backgroundTint="#F00"
+        android:text="Delete user" />
 
 
     <TextView
@@ -67,11 +67,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/goToDatabaseB"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Go To Database"
-        android:layout_gravity="center"/>
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/goToDatabaseB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="3dp"
+            android:text="Go To Database" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/goToFirestoreB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="3dp"
+            android:text="Go To Firestore" />
+    </LinearLayout>
 
 </LinearLayout>

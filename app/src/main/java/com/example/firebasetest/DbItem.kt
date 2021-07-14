@@ -5,6 +5,6 @@ data class DbItem(val userName:String?=null, val number: String? = null, val nam
 
     override fun toString():String
     {
-        return "$userName: $number, $name"
+        return "user: $userName: number: $number, name: $name"
     }
 }

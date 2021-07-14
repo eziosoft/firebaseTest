@@ -35,13 +35,17 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToDataBaseFragment())
         }
 
+        binding.goToFirestoreB.setOnClickListener() {
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToFirestoreFragment())
+        }
+
 
         binding.deleteUserB.setOnClickListener() {
             fireBaseTest.firebaseAuthentication.deleteUser { result ->
                 if (result.isSuccessful) {
                     showToast("User deleted")
                 } else {
-                    showAlert(AlertType.ERROR,"Error",result.exception?.message.toString()){}
+                    showAlert(AlertType.ERROR, "Error", result.exception?.message.toString()) {}
                     Log.e(TAG, "delete user: ", result.exception)
                 }
             }
@@ -54,7 +58,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 if (result.isSuccessful) {
                     showToast("New User created")
                 } else {
-                    showAlert(AlertType.ERROR,"Error",result.exception?.message.toString()){}
+                    showAlert(AlertType.ERROR, "Error", result.exception?.message.toString()) {}
                     Log.e(TAG, "create user: ", result.exception)
                 }
             }
@@ -85,7 +89,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
                 } else {
                     Log.e(TAG, result.exception.toString())
-                    showAlert(AlertType.ERROR,"Error",result.exception?.message.toString()){}
+                    showAlert(AlertType.ERROR, "Error", result.exception?.message.toString()) {}
                 }
             }
         }
