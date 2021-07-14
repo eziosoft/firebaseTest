@@ -4,15 +4,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.example.firebasetest.DbItem
-import com.example.firebasetest.R
-import com.example.firebasetest.TAG
+import com.example.firebasetest.*
 import com.example.firebasetest.databinding.FragmentFirestoreBinding
 import com.example.firebasetest.firebase.FireBaseTest
 import com.example.firebasetest.firebase.addSnapshotListener
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
+import java.lang.Error
 import javax.inject.Inject
 
 
@@ -57,7 +56,8 @@ class FirestoreFragment : Fragment(R.layout.fragment_firestore) {
                 Log.d(TAG, "DocumentSnapshot added with ID: ${docRef.id}")
             }
             .addOnFailureListener { e ->
-                Log.w(TAG, "Error adding document", e)
+                Log.e(TAG, "Error adding document", e)
+                showAlert(AlertType.ERROR,"Error",e.message.toString()){}
             }
     }
 
