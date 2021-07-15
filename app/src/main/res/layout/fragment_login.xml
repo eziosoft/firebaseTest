@@ -71,7 +71,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="#AAA"
+        >
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/goToDatabaseB"
@@ -79,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="3dp"
-            android:text="Go To Database" />
+            android:text="Database" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/goToFirestoreB"
@@ -87,7 +89,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="3dp"
-            android:text="Go To Firestore" />
+            android:text="Firestore" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/goToStorageB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="3dp"
+            android:text="Storage" />
     </LinearLayout>
 
 </LinearLayout>

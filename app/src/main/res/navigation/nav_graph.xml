@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_loginFragment_to_firestoreFragment"
             app:destination="@id/firestoreFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_storageFragment"
+            app:destination="@id/storageFragment" />
     </fragment>
     <fragment
         android:id="@+id/dataBaseFragment"
@@ -26,4 +29,9 @@
         android:name="com.example.firebasetest.ui.FirestoreFragment"
         android:label="fragment_firestore"
         tools:layout="@layout/fragment_firestore" />
+    <fragment
+        android:id="@+id/storageFragment"
+        android:name="com.example.firebasetest.ui.StorageFragment"
+        android:label="fragment_storage"
+        tools:layout="@layout/fragment_storage" />
 </navigation>

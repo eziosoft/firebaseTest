@@ -39,6 +39,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToFirestoreFragment())
         }
 
+        binding.goToStorageB.setOnClickListener() {
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToStorageFragment())
+        }
+
 
         binding.deleteUserB.setOnClickListener() {
             fireBaseTest.firebaseAuthentication.deleteUser { result ->
