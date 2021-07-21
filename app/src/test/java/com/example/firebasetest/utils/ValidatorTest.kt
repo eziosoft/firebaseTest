@@ -1,6 +1,5 @@
 package com.example.firebasetest.utils
 
-import junit.framework.TestCase
 import org.junit.Assert
 import org.junit.Test
 
@@ -37,4 +36,40 @@ class ValidatorTest
         Assert.assertEquals(false, validator.isEmailValid(email))
     }
 
+
+    // Password
+    @Test
+    fun check_password_success_validation() {
+        val password = "Qwerty1!"
+
+        Assert.assertEquals(true, validator.isPasswordValid(password))
+    }
+
+    @Test
+    fun check_empty_password_fail_validation() {
+        val password = ""
+
+        Assert.assertEquals(false, validator.isPasswordValid(password))
+    }
+
+    @Test
+    fun check_no_number_password_fail_validation() {
+        val password = "Qwerty!"
+
+        Assert.assertEquals(false, validator.isPasswordValid(password))
+    }
+
+    @Test
+    fun check_no_big_letter_password_fail_validation() {
+        val password = "qwerty1!"
+
+        Assert.assertEquals(false, validator.isPasswordValid(password))
+    }
+
+    @Test
+    fun check_not_enough_characters_password_fail_validation() {
+        val password = "Qwert1!"
+
+        Assert.assertEquals(false, validator.isPasswordValid(password))
+    }
 }
