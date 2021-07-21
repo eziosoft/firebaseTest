@@ -10,6 +10,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.firebasetest.*
 import com.example.firebasetest.databinding.FragmentLoginBinding
+import com.example.firebasetest.utils.AlertType
+import com.example.firebasetest.utils.showAlert
+import com.example.firebasetest.utils.showToast
 import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect

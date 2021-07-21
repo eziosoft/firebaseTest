@@ -1,4 +1,4 @@
-package com.example.firebasetest
+package com.example.firebasetest.utils
 
 import android.app.Dialog
 import android.content.Context
@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.Constraints
 import androidx.fragment.app.Fragment
+import com.example.firebasetest.R
 
 fun Fragment.showToast( message: String) {
     Toast.makeText(this.requireContext(), message, Toast.LENGTH_SHORT).show()

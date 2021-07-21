@@ -1,35 +1,23 @@
 package com.example.firebasetest.ui
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.firebasetest.AlertType
-import com.example.firebasetest.TAG
 import com.example.firebasetest.firebase.FireBaseTest
-import com.example.firebasetest.showAlert
-import com.example.firebasetest.showToast
+import com.example.firebasetest.utils.Validator
 import com.google.firebase.auth.FirebaseUser
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableSharedFlow
-import kotlinx.coroutines.launch
-import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginFragmentViewModel @Inject constructor(
+class LoginFragmentViewModel @Inject constructor(val validator: Validator,
     state: SavedStateHandle,
     private val fireBaseTest: FireBaseTest
 ) : ViewModel() {
 
-//    private val _authFlow = MutableSharedFlow<CurrentUser>()
-//    val authFlow: Flow<CurrentUser> = _authFlow
+    data class CurrentUser(val authenticated: Boolean, val firebaseUser: FirebaseUser?)
 
     val currentUser = MutableLiveData<CurrentUser>()
-
-    data class CurrentUser(val authenticated: Boolean, val firebaseUser: FirebaseUser?)
 
     init {
         fireBaseTest.firebaseAuthentication.addAuthListener { user ->
@@ -43,13 +31,21 @@ class LoginFragmentViewModel @Inject constructor(
         password: String,
         state: (success: Boolean, exception: Exception?) -> Unit
     ) {
-        fireBaseTest.firebaseAuthentication.logIn(
-            email,
-            password
-        ) { result ->
-            state(result.isSuccessful, result.exception)
 
-        }
+        if(validator.isEmailValid(email)){
+            if(validator.isPasswordValid(password)){
+                fireBaseTest.firebaseAuthentication.logIn(
+                    email,
+                    password
+                ) { result ->
+                    state(result.isSuccessful, result.exception)
+                }
+            }else
+            {
+                state(false, java.lang.Exception("Password is not valid"))
+            }
+        }else state(false, java.lang.Exception("Email is not valid"))
+
     }
 
     fun deleteUser(status: (success: Boolean, exception: Exception?) -> Unit) {
@@ -64,9 +60,20 @@ class LoginFragmentViewModel @Inject constructor(
         password: String,
         status: (success: Boolean, exception: Exception?) -> Unit
     ) {
-        fireBaseTest.firebaseAuthentication.registerUser(email, password) { result ->
-            status(result.isSuccessful, result.exception)
-        }
+
+
+        if(validator.isEmailValid(email)){
+            if(validator.isPasswordValid(password)){
+                fireBaseTest.firebaseAuthentication.registerUser(email, password) { result ->
+                    status(result.isSuccessful, result.exception)
+                }
+            }else
+            {
+                status(false, java.lang.Exception("Password is not valid"))
+            }
+        }else status(false, java.lang.Exception("Email is not valid"))
+
+
     }
 
     fun logoutUser() {

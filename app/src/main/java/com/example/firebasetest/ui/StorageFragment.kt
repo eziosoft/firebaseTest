@@ -10,6 +10,9 @@ import com.bumptech.glide.Glide
 import com.example.firebasetest.*
 import com.example.firebasetest.databinding.FragmentStorageBinding
 import com.example.firebasetest.firebase.FireBaseTest
+import com.example.firebasetest.utils.AlertType
+import com.example.firebasetest.utils.showAlert
+import com.example.firebasetest.utils.showToast
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.OnProgressListener
 import com.google.firebase.storage.StorageReference

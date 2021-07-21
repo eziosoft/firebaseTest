@@ -8,6 +8,8 @@ import com.example.firebasetest.*
 import com.example.firebasetest.databinding.FragmentFirestoreBinding
 import com.example.firebasetest.firebase.FireBaseTest
 import com.example.firebasetest.firebase.addSnapshotListener
+import com.example.firebasetest.utils.AlertType
+import com.example.firebasetest.utils.showAlert
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.hilt.android.AndroidEntryPoint
