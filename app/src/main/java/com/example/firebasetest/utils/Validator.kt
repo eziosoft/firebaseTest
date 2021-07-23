@@ -5,7 +5,7 @@ import java.util.regex.Pattern
 import javax.inject.Inject
 import javax.inject.Singleton
 
-
+@Singleton
 class Validator @Inject constructor(){
 
     private val PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$"
@@ -13,12 +13,5 @@ class Validator @Inject constructor(){
 
     fun isEmailValid(email: String) = email.isNotEmpty() && Pattern.compile(EMAIL_PATTERN).matcher(email).matches()
     fun isPasswordValid(password: String) = password.isNotEmpty() && Pattern.compile(PASSWORD_PATTERN).matcher(password).matches()
-
-    fun showHideInputLayoutError(layout: TextInputLayout, hasValidInput: Boolean, errorResource: Int) {
-        layout.error = when (hasValidInput) {
-            true -> ""
-            false -> layout.context.getString(errorResource)
-        }
-    }
 
 }

@@ -10,7 +10,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class LoginFragmentViewModel @Inject constructor(val validator: Validator,
+class LoginFragmentViewModel @Inject constructor(
+    private val validator: Validator,
     state: SavedStateHandle,
     private val fireBaseTest: FireBaseTest
 ) : ViewModel() {
@@ -32,20 +33,24 @@ class LoginFragmentViewModel @Inject constructor(val validator: Validator,
         state: (success: Boolean, exception: Exception?) -> Unit
     ) {
 
-        if(validator.isEmailValid(email)){
-            if(validator.isPasswordValid(password)){
+        if (validator.isEmailValid(email)) {
+            if (validator.isPasswordValid(password)) {
                 fireBaseTest.firebaseAuthentication.logIn(
                     email,
                     password
                 ) { result ->
                     state(result.isSuccessful, result.exception)
                 }
-            }else
-            {
-                state(false, java.lang.Exception("Password is not valid"))
+            } else {
+                state(false, CustomExceptions.PasswordNotValidException("Password is not valid"))
             }
-        }else state(false, java.lang.Exception("Email is not valid"))
+        } else state(false, CustomExceptions.EmailNotValidException("Email is not valid"))
 
+    }
+
+    sealed class CustomExceptions(message: String) : Exception(message) {
+        class EmailNotValidException(message: String) : CustomExceptions(message)
+        class PasswordNotValidException(message: String) : CustomExceptions(message)
     }
 
     fun deleteUser(status: (success: Boolean, exception: Exception?) -> Unit) {
@@ -62,16 +67,15 @@ class LoginFragmentViewModel @Inject constructor(val validator: Validator,
     ) {
 
 
-        if(validator.isEmailValid(email)){
-            if(validator.isPasswordValid(password)){
+        if (validator.isEmailValid(email)) {
+            if (validator.isPasswordValid(password)) {
                 fireBaseTest.firebaseAuthentication.registerUser(email, password) { result ->
                     status(result.isSuccessful, result.exception)
                 }
-            }else
-            {
+            } else {
                 status(false, java.lang.Exception("Password is not valid"))
             }
-        }else status(false, java.lang.Exception("Email is not valid"))
+        } else status(false, java.lang.Exception("Email is not valid"))
 
 
     }
